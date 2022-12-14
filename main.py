@@ -18,7 +18,9 @@ class Msg(BaseModel):
 async def root():
     driver = createDriver()
     driver.get('https://youtube.com')
-    return {"message": "Hello World. Welcome to FastAPI!", "source_code": driver.page_source}
+    source_code = driver.page_source
+    print(source_code)
+    return {"message": "Hello World. Welcome to FastAPI!", "source_code": source_code}
 
 
 @app.get("/homepage")
