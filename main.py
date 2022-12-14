@@ -19,7 +19,7 @@ async def root():
     driver = createDriver()
     driver.get('https://youtube.com')
     source_code = driver.page_source
-    print(source_code)
+    print(source_code[:100])
     return {"message": "Hello World. Welcome to FastAPI!", "source_code": source_code}
 
 
