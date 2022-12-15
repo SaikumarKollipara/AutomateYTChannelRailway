@@ -24,12 +24,12 @@ class Msg(BaseModel):
 @app.get("/")
 
 async def root():
-    driver = createDriver()
-    driver.get('https://youtube.com')
-    source_code = driver.page_source
-    print(source_code[:100])
+    # driver = createDriver()
+    # driver.get('https://youtube.com')
+    # source_code = driver.page_source
+    # print(source_code[:100])
     # print('Started')
-    # run()
+    run()
     return {"message": "Hello World. Welcome to FastAPI!"}
 
 
@@ -50,6 +50,11 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
 
 
 def run():
+    driver = createDriver()
+    driver.get('https://youtube.com')
+    source_code = driver.page_source
+    print(source_code[:100])
+    '''
     print('Entered run func')
     driver = createDriver()
     driver.get('https://kaggle.com')
@@ -87,3 +92,4 @@ def run():
         sleep(logTime)
     
     driver.close()
+    '''
