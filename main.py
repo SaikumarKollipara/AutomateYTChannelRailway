@@ -28,6 +28,7 @@ async def root():
     # driver.get('https://youtube.com')
     # source_code = driver.page_source
     # print(source_code[:100])
+    print('Started')
     run()
     return {"message": "Hello World. Welcome to FastAPI!"}
 
@@ -49,6 +50,7 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
 
 
 def run():
+    print('Entered run func')
     driver = createDriver()
     driver.get('https://kaggle.com')
     sleep(2)
