@@ -92,7 +92,7 @@ def run():
 def test():
     driver = createDriver()
     driver.get('https://youtube.com/')
-    for i in range(10):
+    for i in range(30):
         print(i)
         sleep(1)
     return driver.page_source
