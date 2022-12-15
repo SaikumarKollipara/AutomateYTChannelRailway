@@ -80,11 +80,11 @@ def run():
     driver.find_element_by_css_selector('[title="Run all"]').click()
     print('running')
 
-    # totalTime = (3 * 60 * 60) + (0 * 60) + (0)
-    # logTime = (0 * 60 * 60) + (10 * 60) + (0)
-    # for i in range(1, totalTime//logTime+1):
-    #     print(f'{(logTime * i)} {timedelta(seconds=logTime * i)} completed')
-    #     sleep(logTime)
+    totalTime = (2 * 60 * 60) + (0 * 60) + (0)
+    logTime = (0 * 60 * 60) + (10 * 60) + (0)
+    for i in range(1, totalTime//logTime+1):
+        print(f'{(logTime * i)} {timedelta(seconds=logTime * i)} completed')
+        sleep(logTime)
     
     driver.close()
     
