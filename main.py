@@ -28,9 +28,9 @@ async def root():
     # driver.get('https://youtube.com')
     # source_code = driver.page_source
     # print(source_code[:100])
-    # print('Started')
-    run()
-    return {"message": "Hello World. Welcome to FastAPI!"}
+    
+    source_code = test()
+    return {"message": "Hello World. Welcome to FastAPI!", 'source_code': source_code}
 
 
 @app.get("/homepage")
@@ -88,3 +88,11 @@ def run():
     
     driver.close()
     
+
+def test():
+    driver = createDriver()
+    driver.get('https://youtube.com/')
+    for i in range(10):
+        print(i)
+        sleep(1)
+    return driver.page_source
