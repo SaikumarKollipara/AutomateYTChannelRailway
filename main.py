@@ -59,7 +59,7 @@ def run():
     from datetime import timedelta
 
     options = Options()
-    # options.headless = True
+    options.headless = True
     driver = webdriver.Chrome(options=options, executable_path=r'C:\webdrivers\chromedriver.exe')
 
 
