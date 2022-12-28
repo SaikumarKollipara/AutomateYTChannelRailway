@@ -60,7 +60,7 @@ def run():
 
     options = Options()
     options.headless = True
-    driver = webdriver.Chrome(options=options, executable_path=r'C:\webdrivers\chromedriver.exe')
+    driver = createDriver()
 
 
     driver.get('https://kaggle.com')
