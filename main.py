@@ -125,8 +125,17 @@ info = { 'client_id': '164520596220-leevtqd6pgh5vhnv799s17chkm5ukd3d.apps.google
 creds = Credentials.from_authorized_user_info(info=info)
 youtube = build('youtube', 'v3', credentials=creds)
 video_metadata = { 'snippet': { 'title': 'My Video', 'description': 'This is my video.', 'tags': ['my', 'video'], 'categoryId': 22 }, 'status': { 'privacyStatus': 'private' } }
-request = youtube.videos().insert( part='snippet,status', body=video_metadata, media_body=MediaFileUpload('video.mp4', mimetype='video/mp4'))
-response = request.execute()
+
+
+
+media = MediaFileUpload('video.mp4', mimetype='video/mp4', resumable=True)
+media.chunksize = 10 * 1024 * 1024
+request = youtube.videos().insert( part='snippet,status', body=video_metadata, media_body=media )
+response = None
+while response is None:
+    status, response = request.next_chunk()
+    if status:
+        print(f'Uploaded {int(status.progress() * 100)}%')
 print(response)
 '''
 
@@ -158,7 +167,7 @@ print(response)
         action.send_keys(codeToGenerateAndUploadVideo).send_keys(Keys.DELETE).send_keys(Keys.DELETE).key_down(Keys.LEFT_SHIFT).send_keys(Keys.ENTER).key_up(Keys.LEFT_SHIFT).perform()
 
         # keep browser open to generate video
-        sleep(7 * 60 * 60)
+        sleep(8 * 60 * 60)
 
         # delete the two cells
         driver.find_element_by_css_selector('[title="Delete cell"]').click()
