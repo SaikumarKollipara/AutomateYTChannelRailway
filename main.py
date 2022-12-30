@@ -165,11 +165,11 @@ print(response)'''
         action.send_keys(codeToGenerateAndUploadVideo).key_down(Keys.LEFT_CONTROL).send_keys(Keys.DIVIDE).key_up(Keys.LEFT_CONTROL).key_down(Keys.LEFT_SHIFT).send_keys(Keys.ENTER).key_up(Keys.LEFT_SHIFT).perform()
 
         # keep browser open to generate video
-        sleep(8 * 60 * 60)
+        sleep(12 * 60 * 60)
 
         # delete the two cells
-        driver.find_element_by_css_selector('[title="Delete cell"]').click()
-        driver.find_element_by_css_selector('[title="Delete cell"]').click()
+        # driver.find_element_by_css_selector('[title="Delete cell"]').click()
+        # driver.find_element_by_css_selector('[title="Delete cell"]').click()
 
 
     try:
