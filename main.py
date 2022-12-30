@@ -133,11 +133,9 @@ media.chunksize = 10 * 1024 * 1024
 request = youtube.videos().insert( part='snippet,status', body=video_metadata, media_body=media )
 response = None
 while response is None:
-    status, response = request.next_chunk()
-    if status:
-        print(f'Uploaded {int(status.progress() * 100)}%')
-print(response)
-'''
+status, response = request.next_chunk()
+if status: print(f'Uploaded {int(status.progress() * 100)}%')
+print(response)'''
 
 
     def generateAndUpload():
@@ -164,7 +162,7 @@ print(response)
         
         # paste codeToGenerateAndUploadVideo and shift + enter to execute cell
         action = ActionChains(driver)
-        action.send_keys(codeToGenerateAndUploadVideo).send_keys(Keys.DELETE).send_keys(Keys.DELETE).key_down(Keys.LEFT_SHIFT).send_keys(Keys.ENTER).key_up(Keys.LEFT_SHIFT).perform()
+        action.send_keys(codeToGenerateAndUploadVideo).key_down(Keys.LEFT_CONTROL).send_keys(Keys.DIVIDE).key_up(Keys.LEFT_CONTROL).key_down(Keys.LEFT_SHIFT).send_keys(Keys.ENTER).key_up(Keys.LEFT_SHIFT).perform()
 
         # keep browser open to generate video
         sleep(8 * 60 * 60)
